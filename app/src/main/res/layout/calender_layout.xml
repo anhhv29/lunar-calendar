@@ -27,8 +27,8 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:layout_weight="1">
 
                 <TextView
                     android:id="@+id/txtTitle"
@@ -48,7 +48,7 @@
                 android:layout_weight="1">
 
                 <LinearLayout
-                    android:id="@+id/llThu"
+                    android:id="@+id/llWeekDays"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -173,7 +173,7 @@
                     android:layout_weight="7">
 
                     <TextView
-                        android:id="@+id/tvMonthYear"
+                        android:id="@+id/tvMonth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -193,7 +193,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="50dp"
                         android:fontFamily="sans-serif"
-                        android:text="10"
+                        android:text="1"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="@android:color/holo_red_light"
@@ -201,27 +201,40 @@
                         android:textStyle="normal|bold" />
 
                     <TextView
-                        android:id="@+id/tvThuMay"
+                        android:id="@+id/tvWeekdays"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tvDay"
                         android:layout_centerHorizontal="true"
                         android:fontFamily="sans-serif"
-                        android:text="Thứ ?"
+                        android:text="Chủ nhật"
                         android:textAlignment="center"
                         android:textColor="@android:color/holo_red_light"
                         android:textSize="30dp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvCadao"
+                        android:id="@+id/tvAuthor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvWeekdays"
+                        android:layout_alignStart="@+id/tvWeekdays"
+                        android:layout_alignEnd="@+id/tvWeekdays"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="sans-serif"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvProverb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
                         android:fontFamily="sans-serif"
-                        android:text="Công cha như núi Thái Sơn Nghĩa mẹ như nước trong nguồn chảy ra"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
                         android:textSize="15dp"
@@ -249,7 +262,7 @@
                             android:layout_weight="1">
 
                             <ImageView
-                                android:id="@+id/ivChamDo"
+                                android:id="@+id/ivPoint1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
@@ -257,12 +270,12 @@
                                 android:background="@drawable/trondo" />
 
                             <TextView
-                                android:id="@+id/tvTitleGio"
+                                android:id="@+id/tvTitleHour"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="20dp"
-                                android:layout_toRightOf="@+id/ivChamDo"
+                                android:layout_toRightOf="@+id/ivPoint1"
                                 android:text="Giờ"
                                 android:textColor="#000000"
                                 android:textSize="20dp" />
@@ -274,31 +287,20 @@
                             android:layout_height="0dp"
                             android:layout_weight="3">
 
-                            <TextView
-                                android:id="@+id/tvGio"
+                            <TextClock
+                                android:id="@+id/tvHour"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="2dp"
                                 android:fontFamily="sans-serif"
-                                android:text="20:58"
+                                android:format24Hour="hh:mm"
                                 android:textAlignment="center"
                                 android:textAllCaps="true"
                                 android:textColor="@android:color/black"
                                 android:textSize="30dp"
                                 android:textStyle="normal|bold" />
 
-                            <TextView
-                                android:id="@+id/tvSangChieu"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvGio"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="2dp"
-                                android:text="Giờ Chiều"
-                                android:textColor="#000000"
-                                android:textSize="15dp"
-                                android:textStyle="normal" />
                         </RelativeLayout>
                     </LinearLayout>
 
@@ -316,7 +318,7 @@
                             android:layout_weight="1">
 
                             <ImageView
-                                android:id="@+id/ivChamNau"
+                                android:id="@+id/ivPoint2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
@@ -324,12 +326,12 @@
                                 android:background="@drawable/tronnau" />
 
                             <TextView
-                                android:id="@+id/tvTitleNgay"
+                                android:id="@+id/tvTitleDay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="20dp"
-                                android:layout_toRightOf="@+id/ivChamNau"
+                                android:layout_toRightOf="@+id/ivPoint2"
                                 android:text="Ngày"
                                 android:textColor="#000000"
                                 android:textSize="20dp" />
@@ -342,13 +344,13 @@
                             android:layout_weight="3">
 
                             <TextView
-                                android:id="@+id/tvNgayAm"
+                                android:id="@+id/tvLunarDay"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="3dp"
                                 android:fontFamily="sans-serif"
-                                android:text="30"
+                                android:text="10"
                                 android:textAlignment="center"
                                 android:textAllCaps="true"
                                 android:textColor="@android:color/holo_red_light"
@@ -371,7 +373,7 @@
                             android:layout_weight="1">
 
                             <TextView
-                                android:id="@+id/tvTitleThanh"
+                                android:id="@+id/tvTitleMonth"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
@@ -388,19 +390,18 @@
                             android:layout_weight="3">
 
                             <TextView
-                                android:id="@+id/tvThangAm"
+                                android:id="@+id/tvLunarMonth"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="10dp"
                                 android:fontFamily="sans-serif"
-                                android:text="12/2017"
+                                android:text="12/2022"
                                 android:textAlignment="center"
                                 android:textAllCaps="true"
                                 android:textColor="@android:color/black"
                                 android:textSize="25dp"
                                 android:textStyle="normal|bold" />
-
                         </RelativeLayout>
                     </LinearLayout>
                 </LinearLayout>
