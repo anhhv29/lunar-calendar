@@ -38,7 +38,7 @@
                     android:background="@drawable/buttontitle"
                     android:text="01 - 2023"
                     android:textColor="@android:color/white"
-                    android:textSize="25dp"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -183,7 +183,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="@android:color/holo_red_light"
-                        android:textSize="25dp"
+                        android:textSize="20dp"
                         android:textStyle="normal|bold" />
 
                     <TextView
@@ -197,7 +197,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="@android:color/holo_red_light"
-                        android:textSize="130dp"
+                        android:textSize="80dp"
                         android:textStyle="normal|bold" />
 
                     <TextView
@@ -210,7 +210,7 @@
                         android:text="Chủ nhật"
                         android:textAlignment="center"
                         android:textColor="@android:color/holo_red_light"
-                        android:textSize="30dp"
+                        android:textSize="20dp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -353,7 +353,7 @@
                                 android:textAlignment="center"
                                 android:textAllCaps="true"
                                 android:textColor="@android:color/holo_red_light"
-                                android:textSize="50dp"
+                                android:textSize="30dp"
                                 android:textStyle="normal|bold" />
 
                         </RelativeLayout>
@@ -399,7 +399,7 @@
                                 android:textAlignment="center"
                                 android:textAllCaps="true"
                                 android:textColor="@android:color/black"
-                                android:textSize="25dp"
+                                android:textSize="20dp"
                                 android:textStyle="normal|bold" />
                         </RelativeLayout>
                     </LinearLayout>

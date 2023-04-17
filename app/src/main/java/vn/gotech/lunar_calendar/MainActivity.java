@@ -13,6 +13,7 @@ import java.util.Calendar;
 
 import vn.gotech.lunar_calendar.adapter.MonthAdapter;
 import vn.gotech.lunar_calendar.database.DanhNgon;
+import vn.gotech.lunar_calendar.database.DataSourceDanhNgon;
 import vn.gotech.lunar_calendar.mode.MonthCalender;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<MonthCalender> lst = new ArrayList<>();
     String content = "MAKE YOUR CAR SAFER & SMARTER";
     String author = "GOTECH";
+    DataSourceDanhNgon datasource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
         //month
         tvTitle = findViewById(R.id.tvTitle);
         gridView = findViewById(R.id.gvMonth);
+        datasource = new DataSourceDanhNgon(this);
+        datasource.open();
+        threadLoadData();
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -287,5 +293,31 @@ public class MainActivity extends AppCompatActivity {
         }
 
         super.onResume();
+    }
+
+    private void threadLoadData() {
+        new Thread(() -> {
+            try {
+                getDefaultDataOffline();
+            } catch (Exception e) {
+
+            }
+
+        }).start();
+    }
+
+    public void getDefaultDataOffline() {
+        try {
+            ArrayList<Object> values = datasource.getAllNews();
+            for (Object item : values) {
+                DanhNgon n1 = new DanhNgon();
+                n1.setId(((DanhNgon) item).getId().trim());
+                n1.setContent(((DanhNgon) item).getContent().trim());
+                n1.setAuthor(((DanhNgon) item).getAuthor().trim());
+                lstVN.add(n1);
+            }
+            datasource.close();
+        } catch (Exception ex) {
+        }
     }
 }
