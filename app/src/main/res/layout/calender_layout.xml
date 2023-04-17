@@ -178,11 +178,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
+                        android:layout_marginTop="16dp"
                         android:fontFamily="sans-serif"
                         android:text="Tháng 1 năm 2023"
                         android:textAlignment="center"
                         android:textAllCaps="true"
-                        android:textColor="@android:color/holo_red_light"
+                        android:background="#B17B2C"
+                        android:textColor="@color/white"
                         android:textSize="20dp"
                         android:textStyle="normal|bold"
                         app:layout_constraintTop_toTopOf="parent"
@@ -193,7 +195,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="84dp"
                         android:fontFamily="sans-serif"
                         android:text="1"
                         android:textAlignment="center"
@@ -201,7 +202,7 @@
                         android:textColor="@android:color/holo_red_light"
                         android:textSize="80dp"
                         android:textStyle="normal|bold"
-                        app:layout_constraintTop_toBottomOf="@+id/tvWeekdays"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMonth"
                         tools:layout_editor_absoluteX="0dp" />
 
                     <TextView
@@ -218,7 +219,7 @@
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvMonth" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvDay" />
 
                     <TextView
                         android:id="@+id/tvProverb"
@@ -226,14 +227,15 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tvWeekdays"
                         android:layout_centerHorizontal="true"
+                        android:layout_marginTop="32dp"
                         android:fontFamily="sans-serif"
                         android:maxLines="1"
+                        tools:text="Biết người, biết ta,trăm trận trăm thắng"
                         android:textAlignment="center"
-                        android:textColor="@android:color/holo_red_light"
+                        android:textColor="@color/purple_700"
                         android:textSize="20dp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/tvAuthor"
-                        app:layout_constraintTop_toBottomOf="@+id/tvDay"
+                        app:layout_constraintTop_toBottomOf="@+id/tvWeekdays"
                         tools:layout_editor_absoluteX="0dp" />
 
                     <TextView
@@ -241,12 +243,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
+                        android:layout_marginTop="16dp"
                         android:fontFamily="sans-serif"
+                        tools:text="Tôn Tử"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
                         android:textSize="15dp"
                         android:textStyle="italic"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvProverb"
                         tools:layout_editor_absoluteX="0dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -72,8 +72,12 @@ public class MainActivity extends AppCompatActivity {
             month = calendar.get(Calendar.MONTH) + 1;
             year = calendar.get(Calendar.YEAR);
 
+            String[] can = {"Canh", "Tân", "Nhâm", "Quý", "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ"};
+            String[] chi = {"Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi"};
+            String canChi = can[year % 10] + " " + chi[year % 12]; // tính can chi của năm
+
             tvDay.setText("" + day);
-            tvMonth.setText("Tháng " + month + " Năm " + year);
+            tvMonth.setText("Tháng " + month + " Năm " + year + " năm AL:" + canChi);
             tvAuthor = findViewById(R.id.tvAuthor);
 
             int lunnar[] = lunarYearTools.convertSolar2Lunar(day, month, year, 7);
