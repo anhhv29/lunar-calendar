@@ -36,7 +36,7 @@ public class MonthAdapter extends BaseAdapter {
 
             gridView = inflater.inflate(R.layout.item_month, null);
 
-            TextView textDuong = (TextView) gridView.findViewById(R.id.tvDuong);
+            TextView textDuong = gridView.findViewById(R.id.tvDuong);
 
             if (position == 0 || position == 7 || position == 14 || position == 21 || position == 28 || position == 35) {
                 textDuong.setTextColor(Color.parseColor("#FF4500"));
@@ -44,21 +44,18 @@ public class MonthAdapter extends BaseAdapter {
 
             String duongTMG = lstMonth.get(position).get_MonthDuong();
 
-            ImageView ivCard = (ImageView) gridView.findViewById(R.id.ivCard);
+            ImageView ivCard = gridView.findViewById(R.id.ivCard);
             if (duongTMG.contains("n")) {
                 duongTMG = duongTMG.substring(1);
 
                 ivCard.setBackgroundResource(R.drawable.oringer_card);
             }
             textDuong.setText(duongTMG);
-
-
-            TextView textAm = (TextView) gridView.findViewById(R.id.tvAm);
+            TextView textAm = gridView.findViewById(R.id.tvAm);
             textAm.setText(lstMonth.get(position).get_monthAm());
 
-
         } else {
-            gridView = (View) convertView;
+            gridView = convertView;
         }
         return gridView;
     }

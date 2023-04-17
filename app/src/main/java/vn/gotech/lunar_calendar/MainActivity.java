@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     TextView tvTitle;
     GridView gridView;
     int day, month, year;
-    int ToDay, position, cvMonth, cvYear;
     Calendar calendar;
     LunarYearTools lunarYearTools = new LunarYearTools();
     ArrayList<DanhNgon> lstVN = new ArrayList<>();
@@ -236,56 +235,46 @@ public class MainActivity extends AppCompatActivity {
             tvAuthor.setText("" + author);
 
             //xu ly thang
-            int countDay;
 
-            Log.d("position", position + "");
-
-            ToDay = calendar.get(Calendar.DAY_OF_MONTH);
-
-            cvMonth = calendar.get(Calendar.MONTH);
-            cvYear = calendar.get(Calendar.YEAR);
-            calendar.set(Calendar.DAY_OF_MONTH, 1);
-            calendar.add(Calendar.DAY_OF_MONTH, -1);
-
-            countDay = calendar.get(Calendar.DAY_OF_MONTH);
-
-            if (cvMonth == 0) {
-                cvMonth = 12;
+            if (month == 0) {
+                month = 12;
             }
 
-            if (cvMonth < 10) {
-                tvTitle.setText("0" + cvMonth + " - " + cvYear);
+            if (month < 10) {
+                tvTitle.setText("0" + month + " - " + year);
             } else {
-                tvTitle.setText("" + cvMonth + " - " + cvYear);
+                tvTitle.setText("" + month + " - " + year);
             }
 
-            int thumay = calendar.get(Calendar.DAY_OF_WEEK);
+            Calendar c = Calendar.getInstance();
+            c.set(Calendar.DAY_OF_MONTH, 1);
+            int dayweeks = c.get(Calendar.DAY_OF_WEEK);
 
-            for (int i = 1; i < thumay; i++) {
-                MonthCalender thn = new MonthCalender("", "");
-                lst.add(thn);
+            for (int i = 1; i < dayweeks; i++) {
+                MonthCalender week = new MonthCalender("", "");
+                lst.add(week);
             }
 
+            int countDay = Calendar.getInstance().getActualMaximum(Calendar.DATE);
             for (int i = 1; i <= countDay; i++) {
                 String TMGduong = "" + i;
-
-                if (i == ToDay) {
+                Log.d("123123123", TMGduong + "");
+                if (i == day) {
                     TMGduong = "n" + TMGduong;
-
-                    Log.d("tmgduong", TMGduong);
                 }
-                int am[] = lunarYearTools.convertSolar2Lunar(i, cvMonth, cvYear, 7);
+                int lunar[] = lunarYearTools.convertSolar2Lunar(i, month, year, 7);
 
-                String amtam = "" + am[0];
-                Log.d("am",amtam+"");
-                if (am[0] == 1 || am[0] == countDay) {
-                    amtam += "/" + am[1];
+                String center = "" + lunar[0];
+                Log.d("center", center);
+                if (lunar[0] == 1 || i == 1) {
+                    center += "/" + lunar[1];
                 }
 
-                MonthCalender monthCalender = new MonthCalender("" + TMGduong, "" + amtam);
-                lst.add(monthCalender);
+                MonthCalender week = new MonthCalender("" + TMGduong, "" + center);
+                lst.add(week);
+
+                Log.d("lst", lst.size() + "-" + Calendar.getInstance().getActualMaximum(Calendar.DATE));
             }
-
             monthAdapter = new MonthAdapter(this, lst);
             gridView.setAdapter(monthAdapter);
         } catch (Exception ex) {
