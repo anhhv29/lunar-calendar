@@ -2,6 +2,8 @@ package vn.gotech.lunar_calendar;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,14 +11,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import vn.gotech.lunar_calendar.adapter.MonthAdapter;
 import vn.gotech.lunar_calendar.database.DanhNgon;
+import vn.gotech.lunar_calendar.mode.MonthCalender;
 
 public class MainActivity extends AppCompatActivity {
+    MonthAdapter monthAdapter;
     TextView tvMonth, tvDay, tvWeekdays, tvProverb, tvLunarDay, tvLunarMonth, tvAuthor;
-    Integer day, month, year;
+    TextView tvTitle;
+    GridView gridView;
+    int day, month, year;
+    int ToDay, position, cvMonth, cvYear;
     Calendar calendar;
     LunarYearTools lunarYearTools = new LunarYearTools();
-    ArrayList<DanhNgon> lstVN;
+    ArrayList<DanhNgon> lstVN = new ArrayList<>();
+    ArrayList<MonthCalender> lst = new ArrayList<>();
     String content = "MAKE YOUR CAR SAFER & SMARTER";
     String author = "GOTECH";
 
@@ -25,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //day
         tvMonth = findViewById(R.id.tvMonth);
         tvDay = findViewById(R.id.tvDay);
         tvWeekdays = findViewById(R.id.tvWeekdays);
@@ -32,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
         tvProverb = findViewById(R.id.tvProverb);
         tvLunarDay = findViewById(R.id.tvLunarDay);
         tvLunarMonth = findViewById(R.id.tvLunarMonth);
+
+        //month
+        tvTitle = findViewById(R.id.tvTitle);
+        gridView = findViewById(R.id.gvMonth);
     }
 
     @SuppressLint("SetTextI18n")
@@ -41,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             calendar = Calendar.getInstance();
 
+            //xu ly ngay
             int weekdays = calendar.get(Calendar.DAY_OF_WEEK);
             if (weekdays == 1) {
                 tvWeekdays.setText("Chủ Nhật");
@@ -205,7 +220,6 @@ public class MainActivity extends AppCompatActivity {
                 content = "Giáng sinh an lành";
                 author = "Noel";
             } else {
-
                 if (lstVN.size() > 0) {
                     Integer choose = lunnar[0] + (lunnar[1] * 31);
                     content = "" + lstVN.get(choose).getContent();
@@ -215,8 +229,61 @@ public class MainActivity extends AppCompatActivity {
             tvProverb.setText("" + content);
             tvAuthor.setText("" + author);
 
-        } catch (Exception ex) {
+            //xu ly thang
+            int countDay;
 
+            Log.d("position", position + "");
+
+            ToDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+            cvMonth = calendar.get(Calendar.MONTH);
+            cvYear = calendar.get(Calendar.YEAR);
+            calendar.set(Calendar.DAY_OF_MONTH, 1);
+            calendar.add(Calendar.DAY_OF_MONTH, -1);
+
+            countDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+            if (cvMonth == 0) {
+                cvMonth = 12;
+            }
+
+            if (cvMonth < 10) {
+                tvTitle.setText("0" + cvMonth + " - " + cvYear);
+            } else {
+                tvTitle.setText("" + cvMonth + " - " + cvYear);
+            }
+
+            int thumay = calendar.get(Calendar.DAY_OF_WEEK);
+
+            for (int i = 1; i < thumay; i++) {
+                MonthCalender thn = new MonthCalender("", "");
+                lst.add(thn);
+            }
+
+            for (int i = 1; i <= countDay; i++) {
+                String TMGduong = "" + i;
+                Log.d("tmgduong", TMGduong);
+
+                if (i == ToDay) {
+                    TMGduong = "n" + TMGduong;
+
+                    Log.d("tmgduong", TMGduong);
+                }
+                int am[] = lunarYearTools.convertSolar2Lunar(i, cvMonth, cvYear, 7);
+
+                String amtam = "" + am[0];
+                if (am[0] == 1 || am[0] == countDay) {
+                    amtam += "/" + am[1];
+                }
+
+                MonthCalender monthCalender = new MonthCalender("" + TMGduong, "" + amtam);
+                lst.add(monthCalender);
+            }
+
+            monthAdapter = new MonthAdapter(this, lst);
+            gridView.setAdapter(monthAdapter);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
         super.onResume();
