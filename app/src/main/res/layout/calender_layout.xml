@@ -260,21 +260,12 @@
                             android:layout_marginBottom="1dp"
                             android:layout_weight="1">
 
-                            <ImageView
-                                android:id="@+id/ivPoint1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="10dp"
-                                android:background="@drawable/trondo" />
-
                             <TextView
                                 android:id="@+id/tvTitleHour"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="20dp"
-                                android:layout_toRightOf="@+id/ivPoint1"
                                 android:text="Giờ"
                                 android:textColor="#000000"
                                 android:textSize="20dp" />
@@ -316,21 +307,12 @@
                             android:layout_marginBottom="1dp"
                             android:layout_weight="1">
 
-                            <ImageView
-                                android:id="@+id/ivPoint2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="10dp"
-                                android:background="@drawable/tronnau" />
-
                             <TextView
                                 android:id="@+id/tvTitleDay"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="20dp"
-                                android:layout_toRightOf="@+id/ivPoint2"
                                 android:text="Ngày"
                                 android:textColor="#000000"
                                 android:textSize="20dp" />

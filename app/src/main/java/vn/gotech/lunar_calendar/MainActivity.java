@@ -268,7 +268,6 @@ public class MainActivity extends AppCompatActivity {
 
             for (int i = 1; i <= countDay; i++) {
                 String TMGduong = "" + i;
-                Log.d("tmgduong", TMGduong);
 
                 if (i == ToDay) {
                     TMGduong = "n" + TMGduong;
@@ -278,6 +277,7 @@ public class MainActivity extends AppCompatActivity {
                 int am[] = lunarYearTools.convertSolar2Lunar(i, cvMonth, cvYear, 7);
 
                 String amtam = "" + am[0];
+                Log.d("am",amtam+"");
                 if (am[0] == 1 || am[0] == countDay) {
                     amtam += "/" + am[1];
                 }
