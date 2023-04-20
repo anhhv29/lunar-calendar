@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import vn.gotech.lunar_calendar.adapter.MonthAdapter;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvMonth, tvDay, tvWeekdays, tvProverb, tvLunarDay, tvLunarMonth, tvAuthor;
     TextView tvTitle;
     GridView gridView;
-    int day, month, year;
+    int hour, day, month, year;
     Calendar calendar;
     LunarYearTools lunarYearTools = new LunarYearTools();
     ArrayList<DanhNgon> lstVN = new ArrayList<>();
@@ -69,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
                 tvWeekdays.setText("Thứ " + weekdays);
             }
 
+            Date date = calendar.getTime();
+            hour = date.getHours();
+
             day = calendar.get(Calendar.DAY_OF_MONTH);
             month = calendar.get(Calendar.MONTH) + 1;
             year = calendar.get(Calendar.YEAR);
@@ -100,11 +104,20 @@ public class MainActivity extends AppCompatActivity {
             String chiDay = chi[(dayJuliusNumber + 1) % 12];
             String lunarDay = canDay + " " + chiDay;
 
+            //Chi Giờ
+            String[] chiHour = {"Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"};
+            int gioIndex = (hour + 1) / 2 % 12;
+            Log.e("gio", chiHour[gioIndex]);
+
             //Tính ngày hoàng đạo
             String[] hoangDao = new String[6];
-            String[] hacDao = new String[6];
+//            String[] hacDao = new String[6];
 
             switch (monthLunar % 6) {
+                case 0:
+                    hoangDao = new String[]{"Tuất", "Hợi", "Dần", "Mão", "Tỵ", "Thân"};
+//                    hacDao = new String[]{"Tý", "Sửu", "Thìn", "Ngọ", "Mùi", "Dậu"};
+                    break;
                 case 1:
                     hoangDao = new String[]{"Tý", "Sửu", "Thìn", "Tỵ", "Mùi", "Tuất"};
 //                    hacDao = new String[]{"Dần", "Mão", "Ngọ", "Thân", "Dậu", "Hợi"};
@@ -125,65 +138,62 @@ public class MainActivity extends AppCompatActivity {
                     hoangDao = new String[]{"Thân", "Dậu", "Tý", "Sửu", "Mão", "Ngọ"};
 //                    hacDao = new String[]{"Tuất", "Hợi", "Dần", "Thìn", "Tỵ", "Mùi"};
                     break;
-                case 0:
-                    hoangDao = new String[]{"Tuất", "Hợi", "Dần", "Mão", "Tỵ", "Thân"};
-//                    hacDao = new String[]{"Tý", "Sửu", "Thìn", "Ngọ", "Mùi", "Dậu"};
-                    break;
             }
 
-            boolean checkHoangDao = false;
+            boolean checkNgayHoangDao = false;
             for (String s : hoangDao) {
                 if (chiDay.equals(s)) {
                     Log.e("123abc", "hoangDao");
-                    checkHoangDao = true;
+                    checkNgayHoangDao = true;
                     break;
                 }
             }
 
-            String HoangHacDao = (checkHoangDao) ? "Hoàng Đạo" : "Hắc Đạo";
+            String ngayHoangHacDao = (checkNgayHoangDao) ? "Hoàng Đạo" : "Hắc Đạo";
 
-//            String[] can = {"Canh", "Tân", "Nhâm", "Quý", "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ"};
-//            String[] chi = {"Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi"};
-//
-//            String[] GiapKy = {"Bính Dần", "Đinh Mão", "Mậu Thìn", "Kỷ Tỵ", "Canh Ngọ", "Tân Mùi", "Nhâm Thân", "Quý Dậu", "Giáp Tuất", "Ất Hợi", "Bính Tý", "Đinh Sửu"};
-//            String[] AtCanh = {"Mậu Dần", "Kỷ Mão", "Canh Thìn", "Tân Tỵ", "Nhâm Ngọ", "Quý Mùi", "Giáp Thân", "Ất Dậu", "Bính Tuất", "Đinh Hợi", "Mậu Tý", "Kỷ Sửu"};
-//            String[] BinhTan = {"Canh Dần", "Tân Mão", "Nhâm Thìn", "Quý Tỵ", "Giáp Ngọ", "Ất Mùi", "Bính Thân", "Đinh Dậu", "Mậu Tuất", "Kỷ Hợi", "Canh Tý", "Tân Sửu"};
-//            String[] DinhNham = {"Nhâm Dần", "Quý Mão", "Giáp Thìn", "Ất Tỵ", "Bính Ngọ", "Đinh Mùi", "Mậu Thân", "Kỷ Dậu", "Canh Tuất", "Tân Hợi", "Nhâm Tý", "Quý Sửu"};
-//            String[] MauQuy = {"Giáp Dần", "Ất Mão", "Bính Thìn", "Đinh Tỵ", "Mậu Ngọ", "Kỷ Mùi", "Canh Thân", "Tân Dậu", "Nhâm Tuất", "Quý Hợi", "Giáp Tý", "Ất Sửu"};
+            //Tính giờ hoàng đạo
+            String[] gioHoangDao = new String[6];
 
-            // tính can chi năm
-//            String yearCode = can[year % 10];
-//            String yearChi = chi[year % 12];
-//            String lunarYear = yearCode + " " + yearChi;
+            switch (chiDay) {
+                case "Tỵ":
+                case "Hợi":
+                    gioHoangDao = new String[]{"Sửu", "Thìn", "Ngọ", "Tuất", "Hợi"};
+                    break;
+                case "Tý":
+                case "Ngọ":
+                    gioHoangDao = new String[]{"Tý", "Sửu", "Mão", "Ngọ", "Thân", "Dậu"};
+                    break;
+                case "Sửu":
+                case "Mùi":
+                    gioHoangDao = new String[]{"Dần", "Mão", "Tỵ", "Thân", "Tuất", "Hợi"};
+                    break;
+                case "Dần":
+                case "Thân":
+                    gioHoangDao = new String[]{"Tý", "Sửu", "Thìn", "Tỵ", "Mùi", "Tuất"};
+                    break;
+                case "Mão":
+                case "Dậu":
+                    gioHoangDao = new String[]{"Tý", "Dần", "Mão", "Ngọ", "Mùi", "Dậu"};
+                    break;
+                case "Thìn":
+                case "Tuất":
+                    gioHoangDao = new String[]{"Dần", "Thìn", "Tỵ", "Thân", "Dậu", "Hợi"};
+                    break;
+            }
 
-            //tính can chi tháng
-//            String lunarMonth = null;
-//            switch (yearCode) {
-//                case "Giáp":
-//                case "Kỷ":
-//                    lunarMonth = GiapKy[monthLunar - 1];
-//                    break;
-//                case "Ất":
-//                case "Canh":
-//                    lunarMonth = AtCanh[monthLunar - 1];
-//                    break;
-//                case "Bính":
-//                case "Tân":
-//                    lunarMonth = BinhTan[monthLunar - 1];
-//                    break;
-//                case "Đinh":
-//                case "Nhâm":
-//                    lunarMonth = DinhNham[monthLunar - 1];
-//                    break;
-//                case "Mậu":
-//                case "Quý":
-//                    lunarMonth = MauQuy[monthLunar - 1];
-//                    break;
-//            }
+            boolean checkGioHoangDao = false;
+            for (String s : gioHoangDao) {
+                if (chiHour[gioIndex].equals(s)) {
+                    Log.e("123abc", "hoangDao");
+                    checkGioHoangDao = true;
+                    break;
+                }
+            }
 
+            String gioHoangHacDao = (checkGioHoangDao) ? "Hoàng Đạo" : "Hắc Đạo";
 
             tvDay.setText("" + day);
-            tvMonth.setText("Tháng " + month + " Năm " + year + " - năm AL: " + lunarYear + " - tháng AL: " + lunarMonth + " - ngày AL: " + lunarDay + " - Ngày: " + HoangHacDao);
+            tvMonth.setText("Tháng " + month + " Năm " + year + " - năm AL: " + lunarYear + " - tháng AL: " + lunarMonth + " - ngày AL: " + lunarDay + " - Ngày: " + ngayHoangHacDao + " - Giờ: " + chiHour[gioIndex] + " - " + gioHoangHacDao);
             tvAuthor = findViewById(R.id.tvAuthor);
 
             tvLunarDay.setText("" + dayLunar);
@@ -312,7 +322,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         super.onResume();
     }
 
