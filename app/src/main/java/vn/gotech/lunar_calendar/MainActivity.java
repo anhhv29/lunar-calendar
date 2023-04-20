@@ -75,8 +75,9 @@ public class MainActivity extends AppCompatActivity {
 
             int[] lunar = lunarYearTools.convertSolar2Lunar(day, month, year, 7);
 
-            tvLunarDay.setText("" + lunar[0]);
-            tvLunarMonth.setText(lunar[1] + "/" + lunar[2]);
+            int dayLunar = lunar[0];
+            int monthLunar = lunar[1];
+            int yearLunar = lunar[2];
 
             String[] can = {"Canh", "Tân", "Nhâm", "Quý", "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ"};
             String[] chi = {"Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi"};
@@ -93,92 +94,36 @@ public class MainActivity extends AppCompatActivity {
             String lunarYear = canYear + " " + chiYear;
 
             //tính can chi của tháng
-            int ngayAm = lunar[0];
-            int thangAm = lunar[1];
-            int namAm = lunar[2];
-
             String lunarMonth = null;
-            if (canYear.equals("Giáp") || canYear.equals("Kỷ")) {
-                lunarMonth = GiapKy[thangAm - 1];
-            } else if (canYear.equals("Ất") || canYear.equals("Canh")) {
-                lunarMonth = AtCanh[thangAm - 1];
-            } else if (canYear.equals("Bính") || canYear.equals("Tân")) {
-                lunarMonth = BinhTan[thangAm - 1];
-            } else if (canYear.equals("Đinh") || canYear.equals("Nhâm")) {
-                lunarMonth = DinhNham[thangAm - 1];
-            } else if (canYear.equals("Mậu") || canYear.equals("Quý")) {
-                lunarMonth = MauQuy[thangAm - 1];
+            switch (canYear) {
+                case "Giáp":
+                case "Kỷ":
+                    lunarMonth = GiapKy[monthLunar - 1];
+                    break;
+                case "Ất":
+                case "Canh":
+                    lunarMonth = AtCanh[monthLunar - 1];
+                    break;
+                case "Bính":
+                case "Tân":
+                    lunarMonth = BinhTan[monthLunar - 1];
+                    break;
+                case "Đinh":
+                case "Nhâm":
+                    lunarMonth = DinhNham[monthLunar - 1];
+                    break;
+                case "Mậu":
+                case "Quý":
+                    lunarMonth = MauQuy[monthLunar - 1];
+                    break;
             }
-
-
-            //tính can chi của tháng
-
-//            String lunarMonthKey = thangAmLich + "-" + canAmLich;
-
-
-//            HashMap<String, String> lunarMonth2 = new HashMap<>();
-//            for (int i = 0; i < 12; i++) {
-//                int m = i + 1;
-//                String s = (i > 5) ? chi[i - 6] : chi[6 + i];
-//                lunarMonth2.put("T" + m, s);
-//            }
-//
-//            HashMap<String, String[]> lunarMonth3 = new HashMap<>();
-//            List<String> listMonthCan = new ArrayList<>();
-//
-//            for (int i = 0; i < 5; i++) {
-//                listMonthCan.add(can[i + 4] + "/" + can[(i + 9 > 9) ? i - 1 : (i + 9)]);
-//            }
-//
-//            for (int i = 0; i < listMonthCan.size(); i++) {
-//                if (i == 0) {
-//                    String[] canThang = new String[12];
-//                    for (int j = 0; j < 12; j++) {
-//                        canThang[j] = ((j > 3) ? can[j - 4] : can[j + 6]) + " " + lunarMonth2.get("T" + (j + 1));
-//                    }
-//                    lunarMonth3.put(listMonthCan.get(i), canThang);
-//                } else if (i == 1) {
-//                    String[] canThang2 = new String[12];
-//                    for (int j = 0; j < 12; j++) {
-//                        canThang2[j] = ((j > 1) ? can[j - 2] : can[j + 8]) + " " + lunarMonth2.get("T" + (j + 1));
-//                    }
-//                    lunarMonth3.put(listMonthCan.get(i), canThang2);
-//                } else if (i == 2) {
-//                    String[] canThang3 = new String[12];
-//                    for (int j = 0; j < 12; j++) {
-//                        canThang3[j] = (j > 9) ? can[j - 10] : can[j] + " " + lunarMonth2.get("T" + (j + 1));
-//                    }
-//                    lunarMonth3.put(listMonthCan.get(i), canThang3);
-//                } else if (i == 3) {
-//                    String[] canThang4 = new String[12];
-//                    for (int j = 0; j < 12; j++) {
-//                        canThang4[j] = ((j > 7) ? can[j - 8] : can[j + 2]) + " " + lunarMonth2.get("T" + (j + 1));
-//                    }
-//                    lunarMonth3.put(listMonthCan.get(i), canThang4);
-//                } else if (i == 4) {
-//                    String[] canThang5 = new String[12];
-//                    for (int j = 0; j < 12; j++) {
-//                        canThang5[j] = ((j > 5) ? can[j - 6] : can[j + 4]) + " " + lunarMonth2.get("T" + (j + 1));
-//                    }
-//                    lunarMonth3.put(listMonthCan.get(i), canThang5);
-//                }
-//            }
-//
-//
-//            for (HashMap.Entry<String, String[]> entry : lunarMonth3.entrySet()) {
-//                String key = entry.getKey();
-//                String[] value = entry.getValue();
-//                for (int j = 0; j < value.length; j++) {
-//                    if (key.contains(canYear) && (lunnar[1] - 1) == j)
-//                        Log.e("123123123", "Key: " + key + ", Value: " + value[j]);
-//                }
-//            }
-
 
             tvDay.setText("" + day);
             tvMonth.setText("Tháng " + month + " Năm " + year + " năm AL: " + lunarYear + " tháng AL: " + lunarMonth);
             tvAuthor = findViewById(R.id.tvAuthor);
 
+            tvLunarDay.setText("" + lunar[0]);
+            tvLunarMonth.setText(lunar[1] + "/" + lunar[2]);
 
             //Các ngày lễ trong năm
             HashMap<String, String[]> holidaysLunnar = new HashMap<>(); //ngày lễ âm
@@ -265,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                 month = 12;
             }
 
-            tvTitle.setText((month < 10) ? "0" + month : month + " - " + year);
+            tvTitle.setText((month < 10) ? "0" + month + " - " + year : month + " - " + year);
 
             Calendar c = Calendar.getInstance();
             c.set(Calendar.DAY_OF_MONTH, 1);
@@ -284,9 +229,11 @@ public class MainActivity extends AppCompatActivity {
                     TMGduong = "n" + TMGduong;
                 }
 
-                String center = "" + lunar[0];
+                int[] lunar1 = lunarYearTools.convertSolar2Lunar(i, month, year, 7);
+
+                String center = "" + lunar1[0];
                 Log.d("center", center);
-                if (lunar[0] == 1 || i == 1) {
+                if (lunar1[0] == 1 || i == 1) {
                     center += "/" + lunar[1];
                 }
 
