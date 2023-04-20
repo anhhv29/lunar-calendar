@@ -79,22 +79,68 @@ public class MainActivity extends AppCompatActivity {
             int monthLunar = lunar[1];
             int yearLunar = lunar[2];
 
+            //Tính Can, Chi Ngày/Tháng/Năm
             String[] can = {"Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"};
             String[] chi = {"Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"};
 
+            //Năm Can Chi
             String canYear = can[(yearLunar + 6) % 10];
             String chiYear = chi[(yearLunar + 8) % 12];
             String lunarYear = canYear + " " + chiYear;
 
+            //Tháng Can Chi
             String[] chiM = {"Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu"};
             String canMonth = can[(yearLunar * 12 + monthLunar + 3) % 10];
             String chiMonth = chiM[monthLunar - 1];
             String lunarMonth = canMonth + " " + chiMonth;
 
+            //Ngày Can Chi
             int dayJuliusNumber = jdFromDate(day, month, year);
             String canDay = can[(dayJuliusNumber + 9) % 10];
             String chiDay = chi[(dayJuliusNumber + 1) % 12];
             String lunarDay = canDay + " " + chiDay;
+
+            //Tính ngày hoàng đạo
+            String[] hoangDao = new String[6];
+            String[] hacDao = new String[6];
+
+            switch (monthLunar % 6) {
+                case 1:
+                    hoangDao = new String[]{"Tý", "Sửu", "Thìn", "Tỵ", "Mùi", "Tuất"};
+//                    hacDao = new String[]{"Dần", "Mão", "Ngọ", "Thân", "Dậu", "Hợi"};
+                    break;
+                case 2:
+                    hoangDao = new String[]{"Dần", "Mão", "Ngọ", "Mùi", "Dậu", "Tý"};
+//                    hacDao = new String[]{"Thìn", "Tỵ", "Thân", "Tuất", "Hợi", "Sửu"};
+                    break;
+                case 3:
+                    hoangDao = new String[]{"Thìn", "Tỵ", "Thân", "Dậu", "Hợi", "Dần"};
+//                    hacDao = new String[]{"Ngọ", "Mùi", "Tuất", "Tý", "Sửu", "Mão"};
+                    break;
+                case 4:
+                    hoangDao = new String[]{"Ngọ", "Mùi", "Tuất", "Hợi", "Sửu", "Thìn"};
+//                    hacDao = new String[]{"Thân", "Dậu", "Tý", "Dần", "Mão", "Tỵ"};
+                    break;
+                case 5:
+                    hoangDao = new String[]{"Thân", "Dậu", "Tý", "Sửu", "Mão", "Ngọ"};
+//                    hacDao = new String[]{"Tuất", "Hợi", "Dần", "Thìn", "Tỵ", "Mùi"};
+                    break;
+                case 0:
+                    hoangDao = new String[]{"Tuất", "Hợi", "Dần", "Mão", "Tỵ", "Thân"};
+//                    hacDao = new String[]{"Tý", "Sửu", "Thìn", "Ngọ", "Mùi", "Dậu"};
+                    break;
+            }
+
+            boolean checkHoangDao = false;
+            for (String s : hoangDao) {
+                if (chiDay.equals(s)) {
+                    Log.e("123abc", "hoangDao");
+                    checkHoangDao = true;
+                    break;
+                }
+            }
+
+            String HoangHacDao = (checkHoangDao) ? "Hoàng Đạo" : "Hắc Đạo";
 
 //            String[] can = {"Canh", "Tân", "Nhâm", "Quý", "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ"};
 //            String[] chi = {"Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi"};
@@ -135,68 +181,9 @@ public class MainActivity extends AppCompatActivity {
 //                    break;
 //            }
 
-            //cách tính khác về can chi tháng
-//            HashMap<String, String> lunarMonth2 = new HashMap<>();
-//            for (int i = 0; i < 12; i++) {
-//                int m = i + 1;
-//                String s = (i > 5) ? chi[i - 6] : chi[6 + i];
-//                lunarMonth2.put("T" + m, s);
-//            }
-//
-//            HashMap<String, String[]> lunarMonth3 = new HashMap<>();
-//            List<String> listMonthCan = new ArrayList<>();
-//
-//            for (int i = 0; i < 5; i++) {
-//                listMonthCan.add(can[i + 4] + "/" + can[(i + 9 > 9) ? i - 1 : (i + 9)]);
-//            }
-//
-//            for (int i = 0; i < listMonthCan.size(); i++) {
-//                if (i == 0) {
-//                    String[] canThang = new String[12];
-//                    for (int j = 0; j < 12; j++) {
-//                        canThang[j] = ((j > 3) ? can[j - 4] : can[j + 6]) + " " + lunarMonth2.get("T" + (j + 1));
-//                    }
-//                    lunarMonth3.put(listMonthCan.get(i), canThang);
-//                } else if (i == 1) {
-//                    String[] canThang2 = new String[12];
-//                    for (int j = 0; j < 12; j++) {
-//                        canThang2[j] = ((j > 1) ? can[j - 2] : can[j + 8]) + " " + lunarMonth2.get("T" + (j + 1));
-//                    }
-//                    lunarMonth3.put(listMonthCan.get(i), canThang2);
-//                } else if (i == 2) {
-//                    String[] canThang3 = new String[12];
-//                    for (int j = 0; j < 12; j++) {
-//                        canThang3[j] = (j > 9) ? can[j - 10] : can[j] + " " + lunarMonth2.get("T" + (j + 1));
-//                    }
-//                    lunarMonth3.put(listMonthCan.get(i), canThang3);
-//                } else if (i == 3) {
-//                    String[] canThang4 = new String[12];
-//                    for (int j = 0; j < 12; j++) {
-//                        canThang4[j] = ((j > 7) ? can[j - 8] : can[j + 2]) + " " + lunarMonth2.get("T" + (j + 1));
-//                    }
-//                    lunarMonth3.put(listMonthCan.get(i), canThang4);
-//                } else if (i == 4) {
-//                    String[] canThang5 = new String[12];
-//                    for (int j = 0; j < 12; j++) {
-//                        canThang5[j] = ((j > 5) ? can[j - 6] : can[j + 4]) + " " + lunarMonth2.get("T" + (j + 1));
-//                    }
-//                    lunarMonth3.put(listMonthCan.get(i), canThang5);
-//                }
-//            }
-//
-//
-//            for (HashMap.Entry<String, String[]> entry : lunarMonth3.entrySet()) {
-//                String key = entry.getKey();
-//                String[] value = entry.getValue();
-//                for (int j = 0; j < value.length; j++) {
-//                    if (key.contains(canYear) && (lunnar[1] - 1) == j)
-//                        Log.e("123123123", "Key: " + key + ", Value: " + value[j]);
-//                }
-//            }
-
 
             tvDay.setText("" + day);
-            tvMonth.setText("Tháng " + month + " Năm " + year + " - năm AL: " + lunarYear + " - tháng AL: " + lunarMonth + " - ngày AL " + lunarDay);
+            tvMonth.setText("Tháng " + month + " Năm " + year + " - năm AL: " + lunarYear + " - tháng AL: " + lunarMonth + " - ngày AL: " + lunarDay + " - Ngày: " + HoangHacDao);
             tvAuthor = findViewById(R.id.tvAuthor);
 
             tvLunarDay.setText("" + dayLunar);
@@ -292,8 +279,10 @@ public class MainActivity extends AppCompatActivity {
             c.set(Calendar.DAY_OF_MONTH, 1);
             int dayweeks = c.get(Calendar.DAY_OF_WEEK);
 
+            lst.clear();
             for (int i = 1; i < dayweeks; i++) {
                 MonthCalender week = new MonthCalender("", "");
+                Log.d("lst", lst.size() + "");
                 lst.add(week);
             }
 
@@ -363,5 +352,14 @@ public class MainActivity extends AppCompatActivity {
         }
         //jd = jd - 1721425;
         return jd;
+    }
+
+    private void checkHoangHacDao(String chiDay, String[] chiDays, String message) {
+        for (String s : chiDays) {
+            if (chiDay.equals(s)) {
+                Log.e("123abc", message);
+                break;
+            }
+        }
     }
 }
