@@ -79,51 +79,128 @@ public class MainActivity extends AppCompatActivity {
             int monthLunar = lunar[1];
             int yearLunar = lunar[2];
 
-            String[] can = {"Canh", "Tân", "Nhâm", "Quý", "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ"};
-            String[] chi = {"Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi"};
+            String[] can = {"Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"};
+            String[] chi = {"Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"};
 
-            String[] GiapKy = {"Bính Dần", "Đinh Mão", "Mậu Thìn", "Kỷ Tỵ", "Canh Ngọ", "Tân Mùi", "Nhâm Thân", "Quý Dậu", "Giáp Tuất", "Ất Hợi", "Bính Tý", "Đinh Sửu"};
-            String[] AtCanh = {"Mậu Dần", "Kỷ Mão", "Canh Thìn", "Tân Tỵ", "Nhâm Ngọ", "Quý Mùi", "Giáp Thân", "Ất Dậu", "Bính Tuất", "Đinh Hợi", "Mậu Tý", "Kỷ Sửu"};
-            String[] BinhTan = {"Canh Dần", "Tân Mão", "Nhâm Thìn", "Quý Tỵ", "Giáp Ngọ", "Ất Mùi", "Bính Thân", "Đinh Dậu", "Mậu Tuất", "Kỷ Hợi", "Canh Tý", "Tân Sửu"};
-            String[] DinhNham = {"Nhâm Dần", "Quý Mão", "Giáp Thìn", "Ất Tỵ", "Bính Ngọ", "Đinh Mùi", "Mậu Thân", "Kỷ Dậu", "Canh Tuất", "Tân Hợi", "Nhâm Tý", "Quý Sửu"};
-            String[] MauQuy = {"Giáp Dần", "Ất Mão", "Bính Thìn", "Đinh Tỵ", "Mậu Ngọ", "Kỷ Mùi", "Canh Thân", "Tân Dậu", "Nhâm Tuất", "Quý Hợi", "Giáp Tý", "Ất Sửu"};
-
-            // tính can chi của năm
-            String canYear = can[year % 10];
-            String chiYear = chi[year % 12];
+            String canYear = can[(yearLunar + 6) % 10];
+            String chiYear = chi[(yearLunar + 8) % 12];
             String lunarYear = canYear + " " + chiYear;
 
-            //tính can chi của tháng
-            String lunarMonth = null;
-            switch (canYear) {
-                case "Giáp":
-                case "Kỷ":
-                    lunarMonth = GiapKy[monthLunar - 1];
-                    break;
-                case "Ất":
-                case "Canh":
-                    lunarMonth = AtCanh[monthLunar - 1];
-                    break;
-                case "Bính":
-                case "Tân":
-                    lunarMonth = BinhTan[monthLunar - 1];
-                    break;
-                case "Đinh":
-                case "Nhâm":
-                    lunarMonth = DinhNham[monthLunar - 1];
-                    break;
-                case "Mậu":
-                case "Quý":
-                    lunarMonth = MauQuy[monthLunar - 1];
-                    break;
-            }
+            String[] chiM = {"Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu"};
+            String canMonth = can[(yearLunar * 12 + monthLunar + 3) % 10];
+            String chiMonth = chiM[monthLunar - 1];
+            String lunarMonth = canMonth + " " + chiMonth;
+
+            int dayJuliusNumber = jdFromDate(day, month, year);
+            String canDay = can[(dayJuliusNumber + 9) % 10];
+            String chiDay = chi[(dayJuliusNumber + 1) % 12];
+            String lunarDay = canDay + " " + chiDay;
+
+//            String[] can = {"Canh", "Tân", "Nhâm", "Quý", "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ"};
+//            String[] chi = {"Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi"};
+//
+//            String[] GiapKy = {"Bính Dần", "Đinh Mão", "Mậu Thìn", "Kỷ Tỵ", "Canh Ngọ", "Tân Mùi", "Nhâm Thân", "Quý Dậu", "Giáp Tuất", "Ất Hợi", "Bính Tý", "Đinh Sửu"};
+//            String[] AtCanh = {"Mậu Dần", "Kỷ Mão", "Canh Thìn", "Tân Tỵ", "Nhâm Ngọ", "Quý Mùi", "Giáp Thân", "Ất Dậu", "Bính Tuất", "Đinh Hợi", "Mậu Tý", "Kỷ Sửu"};
+//            String[] BinhTan = {"Canh Dần", "Tân Mão", "Nhâm Thìn", "Quý Tỵ", "Giáp Ngọ", "Ất Mùi", "Bính Thân", "Đinh Dậu", "Mậu Tuất", "Kỷ Hợi", "Canh Tý", "Tân Sửu"};
+//            String[] DinhNham = {"Nhâm Dần", "Quý Mão", "Giáp Thìn", "Ất Tỵ", "Bính Ngọ", "Đinh Mùi", "Mậu Thân", "Kỷ Dậu", "Canh Tuất", "Tân Hợi", "Nhâm Tý", "Quý Sửu"};
+//            String[] MauQuy = {"Giáp Dần", "Ất Mão", "Bính Thìn", "Đinh Tỵ", "Mậu Ngọ", "Kỷ Mùi", "Canh Thân", "Tân Dậu", "Nhâm Tuất", "Quý Hợi", "Giáp Tý", "Ất Sửu"};
+
+            // tính can chi năm
+//            String yearCode = can[year % 10];
+//            String yearChi = chi[year % 12];
+//            String lunarYear = yearCode + " " + yearChi;
+
+            //tính can chi tháng
+//            String lunarMonth = null;
+//            switch (yearCode) {
+//                case "Giáp":
+//                case "Kỷ":
+//                    lunarMonth = GiapKy[monthLunar - 1];
+//                    break;
+//                case "Ất":
+//                case "Canh":
+//                    lunarMonth = AtCanh[monthLunar - 1];
+//                    break;
+//                case "Bính":
+//                case "Tân":
+//                    lunarMonth = BinhTan[monthLunar - 1];
+//                    break;
+//                case "Đinh":
+//                case "Nhâm":
+//                    lunarMonth = DinhNham[monthLunar - 1];
+//                    break;
+//                case "Mậu":
+//                case "Quý":
+//                    lunarMonth = MauQuy[monthLunar - 1];
+//                    break;
+//            }
+
+            //cách tính khác về can chi tháng
+//            HashMap<String, String> lunarMonth2 = new HashMap<>();
+//            for (int i = 0; i < 12; i++) {
+//                int m = i + 1;
+//                String s = (i > 5) ? chi[i - 6] : chi[6 + i];
+//                lunarMonth2.put("T" + m, s);
+//            }
+//
+//            HashMap<String, String[]> lunarMonth3 = new HashMap<>();
+//            List<String> listMonthCan = new ArrayList<>();
+//
+//            for (int i = 0; i < 5; i++) {
+//                listMonthCan.add(can[i + 4] + "/" + can[(i + 9 > 9) ? i - 1 : (i + 9)]);
+//            }
+//
+//            for (int i = 0; i < listMonthCan.size(); i++) {
+//                if (i == 0) {
+//                    String[] canThang = new String[12];
+//                    for (int j = 0; j < 12; j++) {
+//                        canThang[j] = ((j > 3) ? can[j - 4] : can[j + 6]) + " " + lunarMonth2.get("T" + (j + 1));
+//                    }
+//                    lunarMonth3.put(listMonthCan.get(i), canThang);
+//                } else if (i == 1) {
+//                    String[] canThang2 = new String[12];
+//                    for (int j = 0; j < 12; j++) {
+//                        canThang2[j] = ((j > 1) ? can[j - 2] : can[j + 8]) + " " + lunarMonth2.get("T" + (j + 1));
+//                    }
+//                    lunarMonth3.put(listMonthCan.get(i), canThang2);
+//                } else if (i == 2) {
+//                    String[] canThang3 = new String[12];
+//                    for (int j = 0; j < 12; j++) {
+//                        canThang3[j] = (j > 9) ? can[j - 10] : can[j] + " " + lunarMonth2.get("T" + (j + 1));
+//                    }
+//                    lunarMonth3.put(listMonthCan.get(i), canThang3);
+//                } else if (i == 3) {
+//                    String[] canThang4 = new String[12];
+//                    for (int j = 0; j < 12; j++) {
+//                        canThang4[j] = ((j > 7) ? can[j - 8] : can[j + 2]) + " " + lunarMonth2.get("T" + (j + 1));
+//                    }
+//                    lunarMonth3.put(listMonthCan.get(i), canThang4);
+//                } else if (i == 4) {
+//                    String[] canThang5 = new String[12];
+//                    for (int j = 0; j < 12; j++) {
+//                        canThang5[j] = ((j > 5) ? can[j - 6] : can[j + 4]) + " " + lunarMonth2.get("T" + (j + 1));
+//                    }
+//                    lunarMonth3.put(listMonthCan.get(i), canThang5);
+//                }
+//            }
+//
+//
+//            for (HashMap.Entry<String, String[]> entry : lunarMonth3.entrySet()) {
+//                String key = entry.getKey();
+//                String[] value = entry.getValue();
+//                for (int j = 0; j < value.length; j++) {
+//                    if (key.contains(canYear) && (lunnar[1] - 1) == j)
+//                        Log.e("123123123", "Key: " + key + ", Value: " + value[j]);
+//                }
+//            }
+
 
             tvDay.setText("" + day);
-            tvMonth.setText("Tháng " + month + " Năm " + year + " năm AL: " + lunarYear + " tháng AL: " + lunarMonth);
+            tvMonth.setText("Tháng " + month + " Năm " + year + " - năm AL: " + lunarYear + " - tháng AL: " + lunarMonth + " - ngày AL " + lunarDay);
             tvAuthor = findViewById(R.id.tvAuthor);
 
-            tvLunarDay.setText("" + lunar[0]);
-            tvLunarMonth.setText(lunar[1] + "/" + lunar[2]);
+            tvLunarDay.setText("" + dayLunar);
+            tvLunarMonth.setText(monthLunar + "/" + yearLunar);
 
             //Các ngày lễ trong năm
             HashMap<String, String[]> holidaysLunnar = new HashMap<>(); //ngày lễ âm
@@ -205,7 +282,6 @@ public class MainActivity extends AppCompatActivity {
             tvAuthor.setText("" + author);
 
             //xu ly thang
-
             if (month == 0) {
                 month = 12;
             }
@@ -234,7 +310,7 @@ public class MainActivity extends AppCompatActivity {
                 String center = "" + lunar1[0];
                 Log.d("center", center);
                 if (lunar1[0] == 1 || i == 1) {
-                    center += "/" + lunar[1];
+                    center += "/" + lunar1[1];
                 }
 
                 MonthCalender week = new MonthCalender("" + TMGduong, "" + center);
@@ -275,5 +351,17 @@ public class MainActivity extends AppCompatActivity {
             datasource.close();
         } catch (Exception ex) {
         }
+    }
+
+    public int jdFromDate(int day, int month, int year) {
+        int a = (14 - month) / 12;
+        int y = year + 4800 - a;
+        int m = month + 12 * a - 3;
+        int jd = day + (153 * m + 2) / 5 + 365 * y + y / 4 - y / 100 + y / 400 - 32045;
+        if (jd < 2299161) {
+            jd = day + (153 * m + 2) / 5 + 365 * y + y / 4 - 32083;
+        }
+        //jd = jd - 1721425;
+        return jd;
     }
 }
