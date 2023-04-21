@@ -39,7 +39,7 @@ public class MonthAdapter extends BaseAdapter {
             TextView textDuong = gridView.findViewById(R.id.tvDuong);
 
             if (position == 0 || position == 7 || position == 14 || position == 21 || position == 28 || position == 35) {
-                textDuong.setTextColor(Color.parseColor("#FF4500"));
+                textDuong.setTextColor(Color.parseColor("#FFFFFF"));
             }
 
             String duongTMG = lstMonth.get(position).get_MonthDuong();

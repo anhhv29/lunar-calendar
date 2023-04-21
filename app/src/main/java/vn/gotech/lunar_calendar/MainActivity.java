@@ -20,7 +20,9 @@ import vn.gotech.lunar_calendar.mode.MonthCalender;
 
 public class MainActivity extends AppCompatActivity {
     MonthAdapter monthAdapter;
-    TextView tvMonth, tvDay, tvWeekdays, tvProverb, tvLunarDay, tvLunarMonth, tvAuthor;
+    TextView tvMonth, tvDay, tvWeekdays, tvProverb, tvLunarHour, tvLunarDay, tvLunarMonth, tvAuthor;
+    TextView tvHoangDao, tvLunerDay1, tvLunerMonth1, tvLunerYear1;
+    TextView tvHour1, tvHour2, tvHour3, tvHour4, tvHour5, tvHour6;
     TextView tvTitle;
     GridView gridView;
     int hour, day, month, year;
@@ -45,6 +47,18 @@ public class MainActivity extends AppCompatActivity {
         tvProverb = findViewById(R.id.tvProverb);
         tvLunarDay = findViewById(R.id.tvLunarDay);
         tvLunarMonth = findViewById(R.id.tvLunarMonth);
+        tvLunarHour = findViewById(R.id.tvLunarHour);
+        tvHoangDao = findViewById(R.id.tvHoangDao);
+        tvLunerDay1 = findViewById(R.id.tvLunerDay1);
+        tvLunerMonth1 = findViewById(R.id.tvLunerMonth1);
+        tvLunerYear1 = findViewById(R.id.tvLunerYear1);
+        tvAuthor = findViewById(R.id.tvAuthor);
+        tvHour1 = findViewById(R.id.tvHour1);
+        tvHour2 = findViewById(R.id.tvHour2);
+        tvHour3 = findViewById(R.id.tvHour3);
+        tvHour4 = findViewById(R.id.tvHour4);
+        tvHour5 = findViewById(R.id.tvHour5);
+        tvHour6 = findViewById(R.id.tvHour6);
 
         //month
         tvTitle = findViewById(R.id.tvTitle);
@@ -107,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
             //Chi Giờ
             String[] chiHour = {"Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"};
             int gioIndex = (hour + 1) / 2 % 12;
+            String lunarHour = chiHour[gioIndex];
             Log.e("gio", chiHour[gioIndex]);
 
             //Tính ngày hoàng đạo
@@ -157,27 +172,27 @@ public class MainActivity extends AppCompatActivity {
             switch (chiDay) {
                 case "Tỵ":
                 case "Hợi":
-                    gioHoangDao = new String[]{"Sửu", "Thìn", "Ngọ", "Tuất", "Hợi"};
+                    gioHoangDao = new String[]{"Sửu (1h - 3h)", "Thìn (7h - 9h)", "Ngọ (11h - 13h)", "Tuất (19h - 21h)", "Hợi (21h - 23h)"};
                     break;
                 case "Tý":
                 case "Ngọ":
-                    gioHoangDao = new String[]{"Tý", "Sửu", "Mão", "Ngọ", "Thân", "Dậu"};
+                    gioHoangDao = new String[]{"Tý (23h - 1h)", "Sửu (1h - 3h)", "Mão (5h - 7h)", "Ngọ (11h - 13h)", "Thân (15h - 17h)", "Dậu (17h - 19h)"};
                     break;
                 case "Sửu":
                 case "Mùi":
-                    gioHoangDao = new String[]{"Dần", "Mão", "Tỵ", "Thân", "Tuất", "Hợi"};
+                    gioHoangDao = new String[]{"Dần (3h - 5h)", "Mão (5h - 7h)", "Tỵ (9h - 11h)", "Thân (15h - 17h)", "Tuất (19h - 21h)", "Hợi (21h - 23h)"};
                     break;
                 case "Dần":
                 case "Thân":
-                    gioHoangDao = new String[]{"Tý", "Sửu", "Thìn", "Tỵ", "Mùi", "Tuất"};
+                    gioHoangDao = new String[]{"Tý (23h - 1h)", "Sửu (1h - 3h)", "Thìn (7h - 9h)", "Tỵ (9h - 11h)", "Mùi (13h – 15h)", "Tuất (19h - 21h)"};
                     break;
                 case "Mão":
                 case "Dậu":
-                    gioHoangDao = new String[]{"Tý", "Dần", "Mão", "Ngọ", "Mùi", "Dậu"};
+                    gioHoangDao = new String[]{"Tý (23h - 1h)", "Dần (3h - 5h)", "Mão (5h - 7h)", "Ngọ (11h - 13h)", "Mùi (13h – 15h)", "Dậu (17h - 19h)"};
                     break;
                 case "Thìn":
                 case "Tuất":
-                    gioHoangDao = new String[]{"Dần", "Thìn", "Tỵ", "Thân", "Dậu", "Hợi"};
+                    gioHoangDao = new String[]{"Dần (3h - 5h)", "Thìn (7h - 9h", "Tỵ (9h - 11h)", "Thân (15h - 17h)", "Dậu (17h - 19h)", "Hợi (21h - 23h)"};
                     break;
             }
 
@@ -192,12 +207,23 @@ public class MainActivity extends AppCompatActivity {
 
             String gioHoangHacDao = (checkGioHoangDao) ? "Hoàng Đạo" : "Hắc Đạo";
 
-            tvDay.setText("" + day);
-            tvMonth.setText("Tháng " + month + " Năm " + year + " - năm AL: " + lunarYear + " - tháng AL: " + lunarMonth + " - ngày AL: " + lunarDay + " - Ngày: " + ngayHoangHacDao + " - Giờ: " + chiHour[gioIndex] + " - " + gioHoangHacDao);
-            tvAuthor = findViewById(R.id.tvAuthor);
+            tvHour1.setText(gioHoangDao[0]);
+            tvHour2.setText(gioHoangDao[1]);
+            tvHour3.setText(gioHoangDao[2]);
+            tvHour4.setText(gioHoangDao[3]);
+            tvHour5.setText(gioHoangDao[4]);
+            tvHour6.setText(gioHoangDao[5]);
 
+            tvLunarHour.setText("Giờ " + lunarHour);
+            tvHoangDao.setText(" " + ngayHoangHacDao);
+            tvDay.setText("" + day);
+            tvLunerDay1.setText(" " + lunarDay);
+            tvLunerMonth1.setText(" " + lunarMonth);
+            tvLunerYear1.setText(" " + lunarYear);
+            tvMonth.setText("Tháng " + month + " Năm " + year);
             tvLunarDay.setText("" + dayLunar);
-            tvLunarMonth.setText(monthLunar + "/" + yearLunar);
+            tvLunarMonth.setText("Tháng " + monthLunar + " năm " + yearLunar + " Âm Lịch");
+
 
             //Các ngày lễ trong năm
             HashMap<String, String[]> holidaysLunnar = new HashMap<>(); //ngày lễ âm
@@ -275,8 +301,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            tvProverb.setText("" + content);
-            tvAuthor.setText("" + author);
+            tvProverb.setText("\" " + content + " \"");
+            tvAuthor.setText("- " + author + " -");
 
             //xu ly thang
             if (month == 0) {
@@ -361,14 +387,5 @@ public class MainActivity extends AppCompatActivity {
         }
         //jd = jd - 1721425;
         return jd;
-    }
-
-    private void checkHoangHacDao(String chiDay, String[] chiDays, String message) {
-        for (String s : chiDays) {
-            if (chiDay.equals(s)) {
-                Log.e("123abc", message);
-                break;
-            }
-        }
     }
 }

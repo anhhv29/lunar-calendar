@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#D56C6C">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
@@ -183,7 +182,7 @@
                         android:textSize="18dp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Tháng 1 - Năm 2023" />
+                        tools:text="Tháng 1 Năm 2023" />
 
                     <TextView
                         android:id="@+id/tvDay"
@@ -264,7 +263,7 @@
                         android:id="@+id/tvLunarHour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="100dp"
+                        android:layout_marginTop="8dp"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         app:layout_constraintEnd_toStartOf="@+id/guideline6"
@@ -279,7 +278,7 @@
                         android:format24Hour="hh:mm"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
-                        android:textSize="20dp"
+                        android:textSize="18dp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/tvLunarHour"
                         app:layout_constraintTop_toBottomOf="@+id/tvLunarHour"
@@ -290,8 +289,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginEnd="160dp"
-                        android:text="Ngày: "
+                        android:text="Ngày:"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -315,7 +313,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Tháng: "
+                        android:text="Tháng:"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         app:layout_constraintStart_toStartOf="@+id/vDay"
@@ -338,7 +336,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Năm: "
+                        android:text="Năm:"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         app:layout_constraintStart_toStartOf="@+id/vMonth"
@@ -368,7 +366,7 @@
                             android:id="@+id/vDay1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ngày "
+                            android:text="Ngày"
                             android:textColor="@color/white"
                             android:textSize="15dp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -379,10 +377,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="Hắc Đạo"
                             android:textColor="@color/white"
                             android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:text="Hắc Đạo" />
                     </LinearLayout>
 
                     <TextView
@@ -414,6 +412,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/tvHour1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
@@ -422,6 +421,7 @@
                                 tools:text="Dần (3h - 5h)" />
 
                             <TextView
+                                android:id="@+id/tvHour4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
@@ -440,6 +440,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/tvHour2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
@@ -448,12 +449,13 @@
                                 tools:text="Mão (5h - 7h)" />
 
                             <TextView
+                                android:id="@+id/tvHour5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
-                                android:text="Tuất (19h - 21h)"
                                 android:textColor="@color/white"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                tools:text="Tuất (19h - 21h)" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -463,6 +465,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/tvHour3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
@@ -471,12 +474,13 @@
                                 tools:text="Tỵ (9h - 11h)" />
 
                             <TextView
+                                android:id="@+id/tvHour6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
-                                android:text="Hợi (21h - 23h)"
                                 android:textColor="@color/white"
-                                android:textSize="15dp" />
+                                android:textSize="15dp"
+                                tools:text="Hợi (21h - 23h)" />
                         </LinearLayout>
                     </LinearLayout>
 
