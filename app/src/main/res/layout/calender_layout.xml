@@ -192,7 +192,7 @@
                         android:gravity="center"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
-                        android:textSize="68dp"
+                        android:textSize="88dp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/tvMonth"
                         tools:text="1" />
@@ -202,6 +202,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:textAllCaps="true"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         android:textStyle="bold"
@@ -218,7 +219,8 @@
                         android:layout_marginRight="30dp"
                         android:gravity="center"
                         android:textColor="@color/white"
-                        android:textSize="20dp"
+                        android:textSize="18dp"
+                        android:textStyle="italic"
                         app:layout_constraintTop_toBottomOf="@+id/tvWeekdays"
                         tools:text="Biết người, biết ta,trăm trận trăm thắng" />
 
@@ -244,7 +246,7 @@
                         android:textSize="15dp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/tvAuthor"
-                        tools:text="Tháng 12 năm Nhâm Dần" />
+                        tools:text="Tháng 12 năm 2022 Âm Lịch" />
 
                     <TextView
                         android:id="@+id/tvLunarDay"
@@ -253,7 +255,7 @@
                         android:gravity="center"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
-                        android:textSize="35dp"
+                        android:textSize="45dp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/tvLunarMonth"
                         tools:text="10" />
@@ -262,30 +264,26 @@
                         android:id="@+id/tvLunarHour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_marginStart="100dp"
-                        android:text="Giờ"
                         android:textColor="@color/white"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         app:layout_constraintEnd_toStartOf="@+id/guideline6"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvLunarMonth" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvLunarMonth"
+                        tools:text="Giờ Tý" />
 
                     <TextClock
                         android:id="@+id/tvHour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="sans-serif"
                         android:format24Hour="hh:mm"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
-                        android:textSize="30dp"
-                        android:textStyle="normal|bold"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/tvLunarHour"
-                        app:layout_constraintStart_toStartOf="@+id/tvLunarHour"
                         app:layout_constraintTop_toBottomOf="@+id/tvLunarHour"
-                        tools:text="08:30" />
+                        tools:text="23:30" />
 
                     <TextView
                         android:id="@+id/vDay"
@@ -295,32 +293,31 @@
                         android:layout_marginEnd="160dp"
                         android:text="Ngày: "
                         android:textColor="@color/white"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline6"
                         app:layout_constraintTop_toTopOf="@+id/tvLunarHour" />
 
                     <TextView
                         android:id="@+id/tvLunerDay1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="Kỷ Mùi"
                         android:textColor="@color/white"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/vDay"
                         app:layout_constraintStart_toEndOf="@+id/vDay"
-                        app:layout_constraintTop_toTopOf="@+id/vDay" />
+                        app:layout_constraintTop_toTopOf="@+id/vDay"
+                        tools:text="Kỷ Mùi" />
 
                     <TextView
                         android:id="@+id/vMonth"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="8dp"
                         android:text="Tháng: "
                         android:textColor="@color/white"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         app:layout_constraintStart_toStartOf="@+id/vDay"
                         app:layout_constraintTop_toBottomOf="@+id/vDay" />
 
@@ -328,24 +325,22 @@
                         android:id="@+id/tvLunerMonth1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="Kỷ Mùi"
                         android:textColor="@color/white"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/vMonth"
                         app:layout_constraintStart_toEndOf="@+id/vMonth"
-                        app:layout_constraintTop_toTopOf="@+id/vMonth" />
+                        app:layout_constraintTop_toTopOf="@+id/vMonth"
+                        tools:text="Quý Sửu" />
 
                     <TextView
                         android:id="@+id/vYear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginTop="8dp"
                         android:text="Năm: "
                         android:textColor="@color/white"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         app:layout_constraintStart_toStartOf="@+id/vMonth"
                         app:layout_constraintTop_toBottomOf="@+id/vMonth" />
 
@@ -353,14 +348,13 @@
                         android:id="@+id/tvLunerYear1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="Kỷ Mùi"
                         android:textColor="@color/white"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/vYear"
                         app:layout_constraintStart_toEndOf="@+id/vYear"
-                        app:layout_constraintTop_toTopOf="@+id/vYear" />
+                        app:layout_constraintTop_toTopOf="@+id/vYear"
+                        tools:text="Nhâm Dần" />
 
                     <LinearLayout
                         android:id="@+id/linearLayout"
@@ -376,7 +370,7 @@
                             android:layout_height="wrap_content"
                             android:text="Ngày "
                             android:textColor="@color/white"
-                            android:textSize="12dp"
+                            android:textSize="15dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/tvLunarDay" />
 
@@ -385,9 +379,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="Hoàng Đạo"
+                            android:text="Hắc Đạo"
                             android:textColor="@color/white"
-                            android:textSize="12dp"
+                            android:textSize="15dp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -396,87 +390,93 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="164dp"
-                        android:fontFamily="sans-serif"
-                        android:text="Giờ Hoàng Đạo"
-                        android:textAlignment="center"
-                        android:textAllCaps="true"
+                        android:layout_marginTop="30dp"
+                        android:gravity="center"
+                        android:text="Giờ Hoàng Đạo:"
                         android:textColor="@color/white"
-                        android:textSize="30dp"
-                        android:textStyle="normal|bold"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-                        tools:layout_editor_absoluteX="0dp" />
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
                     <LinearLayout
-                        android:id="@+id/linearLayout1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/vDay2">
 
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp">
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
-                                android:text="Tý (23h - 1h)"
                                 android:textColor="@color/white"
-                                android:textSize="20dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp"
-                                android:gravity="center"
-                                android:text="Tý (23h - 1h)"
-                                android:textColor="@color/white"
-                                android:textSize="20dp" />
+                                android:textSize="15dp"
+                                tools:text="Dần (3h - 5h)" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
-                                android:text="Tý (23h - 1h)"
                                 android:textColor="@color/white"
-                                android:textSize="20dp" />
+                                android:textSize="15dp"
+                                tools:text="Thân (15h - 17h)" />
+
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp">
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
-                                android:text="Tý (23h - 1h)"
                                 android:textColor="@color/white"
-                                android:textSize="20dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp"
-                                android:gravity="center"
-                                android:text="Tý (23h - 1h)"
-                                android:textColor="@color/white"
-                                android:textSize="20dp" />
+                                android:textSize="15dp"
+                                tools:text="Mão (5h - 7h)" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
-                                android:text="Tý (23h - 1h)"
+                                android:text="Tuất (19h - 21h)"
                                 android:textColor="@color/white"
-                                android:textSize="20dp" />
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                tools:text="Tỵ (9h - 11h)" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Hợi (21h - 23h)"
+                                android:textColor="@color/white"
+                                android:textSize="15dp" />
                         </LinearLayout>
                     </LinearLayout>
 
