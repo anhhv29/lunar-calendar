@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Lunar-Calendar</string>
-    <string name="banner_id">ca-app-pub-2577061470072962/4050518085</string>
+    <string name="title_home">Lịch Ngày</string>
+    <string name="title_dashboard">Lịch Tháng</string>
+    <string name="title_notifications">Tiện Ích</string>
+    <string name="doubleclick">Nhấn Back 2 lần liên tiếp để thoát !</string>
 </resources>

@@ -1,10 +1,12 @@
 package vn.gotech.lunar_calendar;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvHoangDao, tvLunerDay1, tvLunerMonth1, tvLunerYear1;
     TextView tvHour1, tvHour2, tvHour3, tvHour4, tvHour5, tvHour6;
     TextView tvTitle;
+    ViewFlipper viewCalender;
     GridView gridView;
     int hour, day, month, year;
     Calendar calendar;
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //day
+        viewCalender = findViewById(R.id.viewCalender);
         tvMonth = findViewById(R.id.tvMonth);
         tvDay = findViewById(R.id.tvDay);
         tvWeekdays = findViewById(R.id.tvWeekdays);
@@ -67,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
         datasource.open();
         threadLoadData();
 
+        viewCalender.setOnClickListener(view -> {
+            startActivity(new Intent(MainActivity.this, HomeActivity.class));
+            finish();
+        });
     }
 
     @SuppressLint("SetTextI18n")

@@ -221,7 +221,7 @@
                         android:textSize="18dp"
                         android:textStyle="italic"
                         app:layout_constraintTop_toBottomOf="@+id/tvWeekdays"
-                        tools:text="Biết người, biết ta,trăm trận trăm thắng" />
+                        tools:text="Biết người, biết ta, trăm trận trăm thắng" />
 
                     <TextView
                         android:id="@+id/tvAuthor"
