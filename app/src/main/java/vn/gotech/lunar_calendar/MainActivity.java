@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
             switch (chiDay) {
                 case "Tỵ":
                 case "Hợi":
-                    gioHoangDao = new String[]{"Sửu (1h - 3h)", "Thìn (7h - 9h)", "Ngọ (11h - 13h)", "Tuất (19h - 21h)", "Hợi (21h - 23h)"};
+                    gioHoangDao = new String[]{"Sửu (1h - 3h)", "Thìn (7h - 9h)", "Ngọ (11h - 13h)", "Mùi (13h – 15h)", "Tuất (19h - 21h)", "Hợi (21h - 23h)"};
                     break;
                 case "Tý":
                 case "Ngọ":
